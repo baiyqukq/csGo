@@ -1,0 +1,12 @@
+syntax="proto2";
+
+message CsLogin
+{
+	required string name = 1;
+	required string password = 2;
+}
+
+message ScLogin
+{
+	required int32 res = 1;
+}

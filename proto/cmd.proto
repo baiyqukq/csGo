@@ -1,0 +1,11 @@
+syntax="proto2";
+
+enum CsCmd
+{
+	CS_CMD_LOGIN = 1;
+}
+
+enum ScCmd
+{
+	SC_CMD_LOGIN = 1;
+}
