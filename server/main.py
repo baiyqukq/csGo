@@ -9,7 +9,7 @@ import socketserver
 
 
 if __name__ == '__main__':
-    printt("Welcome to TTR server...")
+    printt("Welcome to csGo server...")
 
 
     db._init()

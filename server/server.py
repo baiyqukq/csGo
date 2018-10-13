@@ -2,13 +2,14 @@ import socketserver
 import struct
 import db
 
+from datetime import datetime
 from common import *
 from pb.cmd_pb2 import *
 from pb.account_pb2 import *
 
 class MyTcpHandler(socketserver.BaseRequestHandler):
     def processMsg(self, cmd, data):
-        printt("Process message...")
+        t = datetime.now()
 
         if cmd == CS_CMD_LOGIN:
             msg = CsLogin()
@@ -23,6 +24,9 @@ class MyTcpHandler(socketserver.BaseRequestHandler):
             self.sendMsg(SC_CMD_LOGIN, msg)
         else:
             printt("There is no processed message")
+
+        cost = datetime.now() - t;
+        printt("Process message[%d] cost: %s" % (cmd, str(cost)))
 
     def sendMsg(self, cmd, msg):
         data = msg.SerializeToString()

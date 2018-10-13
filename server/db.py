@@ -4,7 +4,7 @@ from common import *
 
 class DB:
     def __init__(self):
-        self.database = "ttr"
+        self.database = "csGo"
         self.user = "cr"
         self.passwd = "q"
 
