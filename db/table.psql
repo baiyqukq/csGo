@@ -1,0 +1,5 @@
+CREATE TABLE t_account(
+	c_id		SERIAL		PRIMARY KEY,
+	c_name		VARCHAR(15)	NOT NULL UNIQUE,
+	c_password	vARCHAR(15)
+);

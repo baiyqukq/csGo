@@ -1,0 +1,1 @@
+INSERT INTO t_account(c_name, c_password) VALUES ('cr', 'q');
