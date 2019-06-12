@@ -30,13 +30,13 @@ class MyTcpHandler(socketserver.BaseRequestHandler):
 
     def sendMsg(self, cmd, msg):
         data = msg.SerializeToString()
-        head = struct.pack("!hhh", 6, cmd, len(data))
+        head = struct.pack("!hhh", 6, len(data), cmd)
         self.request.send(head)
         self.request.send(data)
 
     def handle(self):
         head = self.request.recv(6)
-        headLen, cmd, dataLen = struct.unpack("!hhh", head)
+        headLen, dataLen, cmd = struct.unpack("!hhh", head)
         
         if headLen != 6:
             printt("Data transfer format is error, head length is not 6")

@@ -14,7 +14,7 @@ if __name__ == "__main__":
     msg.password = input("Please input your password:")
 
     data = msg.SerializeToString()
-    head = struct.pack("!hhh", 6, CS_CMD_LOGIN, len(data))
+    head = struct.pack("!hhh", 6, len(data), CS_CMD_LOGIN)
 
     # Create a socket (SOCK_STREAM means a TCP socket)
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         sock.sendall(data)
 
         head = sock.recv(6)
-        headLen, cmd, dataLen = struct.unpack("!hhh", head)
+        headLen, dataLen, cmd = struct.unpack("!hhh", head)
 
         if headLen != 6:
             print("Head length is error")
